@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { getAuth } from "firebase/auth";
+import app from './firebase.config';
 
 function App() {
-  const [count, setCount] = useState(0)
+const auth = getAuth(app)
+console.log(auth);
 
   return (
     <>
-      <h1>SpiceNirvana</h1>
+      <h1>SpiceNirvana starting and deploying in firebase</h1>
     </>
   );
 }

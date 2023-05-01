@@ -23,3 +23,6 @@ hero-chef-recipe-hunter-main
 *.njsproj
 *.sln
 *.sw?
+
+# Local Netlify folder
+.netlify
