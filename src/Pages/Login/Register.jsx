@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 
   const errors = {};
 
@@ -9,20 +10,26 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirm, setConfirm] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirm, setShowConfirm] = useState(false)
 
+    const showPasswordHandler = () => {
+      setShowPassword(prev => !prev)
+    };
+    const showConfirmHandler = () => {
+      setShowConfirm((prev) => !prev);
+    };
   
 
     const emailChangeHandler = (event)=> {
         const email = event.target.value
          setEmail(email);
-        if(email.includes('@')){
-           
+        if(email.includes('@')){           
             errors.emailError=null;
         }else {
            
             errors.emailError = "Please put valid email adderss"
-        }
-        
+        }        
     }
     const passwrodChangeHandler = (event)=> {
         const password = event.target.value 
@@ -31,9 +38,9 @@ const Register = () => {
             errors.password = "Password Cant be less than 6 charecter"
         }else {
             errors.password = null
-        }
-       
+        }       
     }
+    
     const confirmChangeHandler = (event)=> {
         const confirm = event.target.value 
         setConfirm(confirm)
@@ -56,16 +63,21 @@ const Register = () => {
         if(email.includes('@')){
             if(password === confirm){
                 console.log('form submit');
+                console.log({email}, {password})
             }
         }
        }
      };
 
      useEffect(() => {
-        if(accept && !errors.password && !errors.emailError && !errors.confirm ){
-            setDisable(true)
-        }else {
-            errors.accept = null
+        if(accept && email !== '' && password !== '' && confirm !=='' ){
+          if (!errors.password && !errors.emailError && !errors.confirm){
+             setDisable(true);
+          }else {            
+            setDisable(false);
+          }
+           
+        }else {          
             setDisable(false)
         }
        
@@ -113,13 +125,25 @@ const Register = () => {
                   <label className="text-xl">
                     Passwrod <span className="text-red-400">*</span>
                   </label>
-                  <input
-                    value={password}
-                    onChange={passwrodChangeHandler}
-                    name="password"
-                    type="password"
-                    className="w-full p-3 rounded-md"
-                  />
+                  <div className="relative">
+                    <input
+                      value={password}
+                      onChange={passwrodChangeHandler}
+                      name="password"
+                      type={!showPassword ? "password" : "text"}
+                      className="w-full p-3 rounded-md"
+                    />
+                    <span
+                      onClick={showPasswordHandler}
+                      className="absolute top-3 right-0 cursor-pointer"
+                    >
+                      {!showPassword ? (
+                        <EyeIcon className="w-6 h-6  " />
+                      ) : (
+                        <EyeSlashIcon className="w-6 h-6  " />
+                      )}
+                    </span>
+                  </div>
                   <p>
                     {errors.password && (
                       <span className="text-red-400 ml-2">
@@ -133,13 +157,25 @@ const Register = () => {
                   <label className="text-xl">
                     Confirm Passwrod <span className="text-red-400">*</span>{" "}
                   </label>
-                  <input
-                    value={confirm}
-                    onChange={confirmChangeHandler}
-                    name="password"
-                    type="password"
-                    className="w-full p-3 rounded-md"
-                  />
+                  <div className="relative">
+                    <input
+                      value={confirm}
+                      onChange={confirmChangeHandler}
+                      name="password"
+                      type={!showConfirm ? "password" : "text"}
+                      className="w-full p-3 rounded-md"
+                    />
+                    <span
+                      onClick={showConfirmHandler}
+                      className="absolute top-3 right-0 cursor-pointer"
+                    >
+                      {!showConfirm ? (
+                        <EyeIcon className="w-6 h-6  " />
+                      ) : (
+                        <EyeSlashIcon className="w-6 h-6  " />
+                      )}
+                    </span>
+                  </div>
                   <p>
                     {errors.confirm && (
                       <span className="text-red-400 ml-2">
@@ -168,7 +204,7 @@ const Register = () => {
                     className=" cursor-pointer ml-2 text-xl"
                   >
                     Accept terms and condition
-                  </label>                 
+                  </label>
                 </div>
                 <div className="mt-4">
                   <button
