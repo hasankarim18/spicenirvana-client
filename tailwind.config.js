@@ -10,12 +10,12 @@ export default {
         auto: "auto",
         cover: "cover",
         contain: "contain",
-        "50": "50%",
-        "25": "25%",
+        50: "50%",
+        25: "25%",
         16: "4rem",
       },
     },
   },
-  plugins: [import("daisyui")],
+  plugins: [require("daisyui")],
 };
 

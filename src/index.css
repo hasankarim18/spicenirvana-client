@@ -7,3 +7,11 @@
     
     @apply sm:pl-0 pl-2 pr-2 sm:pr-0;
 }
+
+.nav-link{
+    @apply hover:text-rose-400
+}
+
+.active{
+    @apply text-red-500
+}
