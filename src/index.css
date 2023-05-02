@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.mobile_padding {
+    
+    @apply sm:pl-0 pl-2 pr-2 sm:pr-0;
+}
