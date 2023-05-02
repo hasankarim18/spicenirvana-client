@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react';
+import {Link, useNavigate} from 'react-router-dom'
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
+import { AuthContext } from '../../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
   const errors = {};
 
@@ -12,6 +14,10 @@ const Register = () => {
     const [confirm, setConfirm] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
+    const navigate = useNavigate()
+
+
+    const { signUpWithPassword, updateUser } = useContext(AuthContext);
 
     const showPasswordHandler = () => {
       setShowPassword(prev => !prev)
@@ -55,15 +61,40 @@ const Register = () => {
         setAccept(event.target.checked)
     }
 
+    const signUpToast = ()=> toast("Sign up successful please login")
+
 
 
      const handleSubmit = (event) => {
        event.preventDefault();
+       const form = event.target 
+       const name = form.name.value 
+       const photo = form.photo.value
        if(accept === true){
         if(email.includes('@')){
             if(password === confirm){
                 console.log('form submit');
                 console.log({email}, {password})
+                signUpWithPassword(email, password)
+                .then(res => {
+                  const registeredUser = res.user;
+                 updateUser(registeredUser, name, photo)
+                   .then(() => {
+                     // Profile updated!
+                     // ...
+                     signUpToast()
+                     navigate('/login')
+                   })
+                   .catch((error) => {
+                     // An error occurred
+                     // ...
+                     console.log(error);
+                   });
+                 
+                })
+                .catch(error => {
+                  console.log(error);
+                })
             }
         }
        }
@@ -186,9 +217,9 @@ const Register = () => {
                 </div>
                 <div className="mt-4">
                   <label className="text-xl">Photo Url</label>
-                  <input
-                    name="password"
-                    type="password"
+                  <input 
+                    name="photo"                   
+                    type="text"
                     className="w-full p-3 rounded-md"
                   />
                 </div>

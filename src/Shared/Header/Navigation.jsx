@@ -1,13 +1,22 @@
 
 import { Link, NavLink } from "react-router-dom";
 import { Bars3BottomRightIcon, Bars3Icon } from "@heroicons/react/24/solid";
+import { toast } from "react-toastify";
 
 
 
-const Navigation = ({ isShow, handleNavbar, navArr, user }) => {
+const Navigation = ({ isShow, handleNavbar, navArr, user, logout }) => {
   //const [isShow, setIsShow] = useState(false);
-
-
+  const notify = ()=> toast('Sign out successful')
+  const logoutHandler = ()=> {
+    logout()
+    .then(()=> {
+      notify()
+    })
+    .catch((error)=> {
+      console.log(error);
+    })
+  }
 
   return (
     <div
@@ -44,7 +53,10 @@ const Navigation = ({ isShow, handleNavbar, navArr, user }) => {
         {!user ? (
           <>
             <span className="w-10 h-10"></span>
-            <Link to="/login" className="btn bg-rose-400 border-0 tracking-wide btn-sm">
+            <Link
+              to="/login"
+              className="btn bg-rose-400 border-0 tracking-wide btn-sm"
+            >
               Login
             </Link>
           </>
@@ -55,12 +67,14 @@ const Navigation = ({ isShow, handleNavbar, navArr, user }) => {
                 <img
                   title="user Name"
                   className="w-10 h-10 cursor-pointer "
-                  src="/assets/user.png"
+                  src={user.photoURL || "/assets/user.png"}
                   alt="users name"
                 />
               </Link>
             </div>
-            <button className="btn btn-sm ">Logout</button>
+            <button onClick={logoutHandler} className="btn btn-sm ">
+              Logout
+            </button>
           </div>
         )}
       </div>

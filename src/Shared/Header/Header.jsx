@@ -9,7 +9,7 @@ import {AuthContext } from '../../Provider/AuthProvider'
 const Header = () => {
   const [isShow, setIsShow] = useState(false)
 
-    const { user } = useContext( AuthContext );
+    const { user, logout } = useContext(AuthContext);
 
    const navArr = [
      {
@@ -40,6 +40,7 @@ const Header = () => {
             navArr={navArr}
             isShow={isShow}
             handleNavbar={handleNavbar}
+            logout={logout}
           />
         </div>
         <div className="relative transition-all duration-700 top-0 z-10">

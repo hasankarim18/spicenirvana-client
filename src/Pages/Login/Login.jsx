@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
+
 
 const errors = {}
 
@@ -9,6 +10,9 @@ const Login = () => {
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
      const [disable, setDisable] = useState(false)
+     const location = useLocation()
+     const navigate = useNavigate()
+     let from = location.state?.from?.pathname || "/";
 
      const emailChangeHandler = (event) => {
        const email = event.target.value;
@@ -41,6 +45,8 @@ const Login = () => {
            setDisable(false)
          }
     }
+
+ 
 
     useEffect(() => {
       if (email.includes("@") && password.length > 5){
