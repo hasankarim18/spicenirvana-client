@@ -1,10 +1,7 @@
 import './App.css'
-import { getAuth } from "firebase/auth";
-import app from './firebase.config';
+
 
 function App() {
-const auth = getAuth(app)
-console.log(auth);
 
   return (
     <>
