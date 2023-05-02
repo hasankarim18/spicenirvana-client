@@ -8,10 +8,10 @@ const MainLayout = () => {
     return (
       <>
         <Header />
-        <div>
+        <div className=" min-h-[calc(100vh_-_200px)]">
           <Outlet />
         </div>
-        <App/>
+        <App />
         <Footer />
       </>
     );
