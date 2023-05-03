@@ -59,7 +59,7 @@ const Navigation = ({ isShow, handleNavbar, navArr, user, logout }) => {
             <span className="w-10 h-10"></span>
             <Link
               to="/login"
-              className="btn bg-rose-400 border-0 tracking-wide btn-sm"
+              className="btn bg-green-800 text-xl border-0 tracking-wide btn-sm"
             >
               Login
             </Link>
@@ -70,15 +70,20 @@ const Navigation = ({ isShow, handleNavbar, navArr, user, logout }) => {
               <Link to="/user-profile">
                 {user?.displayName
                   ? showDisplayName && (
-                      <span className="absolute   bg-red-400 -top-6 rounded-lg -left-20">
+                     <>
                         {user?.displayName?.length > 10 ? (
-                          <span className="p-1">
+                           <span className="absolute   bg-red-400 -top-6 rounded-lg -left-20">
+                          <span className="px-2 py-1">
                             {user?.displayName.substr(0, 10) + "..."}
                           </span>
+                          </span>
                         ) : (
-                          <span className="p-1"> {user?.displayName} </span>
+                           <span className="absolute   bg-red-400 -top-6 rounded-lg -left-10">
+                             <span className="px-2 py-1"> {user?.displayName} </span>
+                          </span>
                         )}
-                      </span>
+                      
+                      </>
                     )
                   : null}
                 {}
@@ -93,7 +98,7 @@ const Navigation = ({ isShow, handleNavbar, navArr, user, logout }) => {
                 />
               </Link>
             </div>
-            <button onClick={logoutHandler} className="btn btn-sm ">
+            <button onClick={logoutHandler} className="btn btn-sm text-xl bg-rose-500 border-0 ">
               Logout
             </button>
           </div>
