@@ -13,13 +13,13 @@ const DataLoadProvider = ({children}) => {
          axios
            .get("https://spicenirvana.vercel.app/chefs")
            .then((response) => {
+            
              setDataLoading(false);
              setChefs(response.data);
            })
            .catch((error) => {
              console.log(error);
            });
-      
 
     }, [])
     
