@@ -14,6 +14,7 @@ const Register = () => {
     const [confirm, setConfirm] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
+    const [signUpError, setSignUpError] = useState(null)
     const navigate = useNavigate()
 
 
@@ -61,7 +62,7 @@ const Register = () => {
         setAccept(event.target.checked)
     }
 
-    const signUpToast = ()=> toast("Sign up successful please login")
+    const signUpToast = (message)=> toast(message)
 
 
 
@@ -73,27 +74,32 @@ const Register = () => {
        if(accept === true){
         if(email.includes('@')){
             if(password === confirm){
-                console.log('form submit');
-                console.log({email}, {password})
+               
                 signUpWithPassword(email, password)
                 .then(res => {
                   const registeredUser = res.user;
+                 setSignUpError(null) 
+                  signUpToast(
+                    `Welcome ${registeredUser}. Your are Successfully Registered.`
+                  );
                  updateUser(registeredUser, name, photo)
                    .then(() => {
                      // Profile updated!
-                     // ...
-                     signUpToast()
-                     navigate('/login')
+                     // ...                  
+                    
+                     navigate('/')
                    })
                    .catch((error) => {
                      // An error occurred
                      // ...
+                    //   const errorMessage = error.message;
                      console.log(error);
                    });
                  
                 })
                 .catch(error => {
-                  console.log(error);
+                   const errorMessage = error.message;
+                   setSignUpError(errorMessage)
                 })
             }
         }
@@ -246,6 +252,7 @@ const Register = () => {
                   >
                     Register
                   </button>
+                  <p className="text-red-400"> {signUpError && signUpError} </p>
                 </div>
               </form>
               <p className="p-4 pt-0">

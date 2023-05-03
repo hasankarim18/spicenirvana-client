@@ -1,17 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-toastify";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 
 const errors = {}
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
+    const [loginError, setLoginError] = useState(null)
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
      const [disable, setDisable] = useState(false)
      const location = useLocation()
      const navigate = useNavigate()
+
+     const loginToast = ()=> toast('Login Successful')
+
+      
+     const {signInWithPassword} = useContext(AuthContext)
+
      let from = location.state?.from?.pathname || "/";
 
      const emailChangeHandler = (event) => {
@@ -36,10 +46,25 @@ const Login = () => {
      const showPasswordHandler = () => {
        setShowPassword((prev) => !prev);
      };
+    //  handle submit
     const handleSubmit = (event)=> {
         event.preventDefault()
          if (email.includes("@") && password.length > 5){
-          console.log('login')
+          signInWithPassword(email, password)
+          .then(() => {        
+             setLoginError(null)
+             loginToast()
+              navigate(from)
+          })
+          .catch((error)=> {
+          //   const errorCode = error.code;
+             const errorMessage = error.message;
+           //  console.log({errorCode});
+            // console.log({errorMessage});
+            setLoginError(errorMessage)
+            const notify = ()=> toast(errorMessage)
+            notify()
+          })
           
          }else {
            setDisable(false)
@@ -117,7 +142,22 @@ const Login = () => {
                     Login
                   </button>
                 </div>
+                <p className="text-red-400">{loginError && loginError}</p>
               </form>
+              <div className="px-4 my-4 flex gap-4 justify-between flex-wrap ">
+                <div className="btn w-full text-2xl text-white">
+                  <span className="mr-2 text-xl capitalize  ">
+                    Sign in with
+                  </span>{" "}
+                  <FaGoogle />
+                </div>
+                <div className="btn w-full text-2xl text-white">
+                  <span className="mr-2 text-xl capitalize  ">
+                    Sign in with
+                  </span>{" "}
+                  <FaGithub />
+                </div>
+              </div>
               <p className="p-4 pt-0">
                 Do not have an account?{" "}
                 <Link className="underline text-primary" to="/register">

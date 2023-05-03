@@ -2,11 +2,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { Bars3BottomRightIcon, Bars3Icon } from "@heroicons/react/24/solid";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 
 
 const Navigation = ({ isShow, handleNavbar, navArr, user, logout }) => {
   //const [isShow, setIsShow] = useState(false);
+  const [showDisplayName, setShowDisplayName] = useState(false)
+
+ 
   const notify = ()=> toast('Sign out successful')
   const logoutHandler = ()=> {
     logout()
@@ -62,11 +66,19 @@ const Navigation = ({ isShow, handleNavbar, navArr, user, logout }) => {
           </>
         ) : (
           <div className="flex items-center gap-2 ">
-            <div className="bg-white rounded-full w-12 flex items-center justify-center  h-12  ">
+            <div className="bg-white relative rounded-full w-12 flex items-center justify-center  h-12  ">
               <Link to="/user-profile">
+                {showDisplayName && (
+                  <span className="absolute py-2 px-6 bg-red-400 -top-12 rounded-lg text-xl tracking-wider left-0">
+                    {user.displayName}
+                  </span>
+                )}
+
                 <img
-                  title="user Name"
-                  className="w-10 h-10 cursor-pointer "
+                  onMouseEnter={() => setShowDisplayName(true)}
+                  onMouseOut={() => setShowDisplayName(false)}                 
+                  style={{ borderRadius: "100%" }}
+                  className="w-10 h-10  cursor-pointer "
                   src={user.photoURL || "/assets/user.png"}
                   alt="users name"
                 />
