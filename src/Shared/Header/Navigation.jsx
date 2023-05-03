@@ -69,14 +69,16 @@ const Navigation = ({ isShow, handleNavbar, navArr, user, logout }) => {
             <div className="bg-white relative rounded-full w-12 flex items-center justify-center  h-12  ">
               <Link to="/user-profile">
                 {showDisplayName && (
-                  <span className="absolute py-2 px-6 bg-red-400 -top-12 rounded-lg text-xl tracking-wider left-0">
-                    {user.displayName}
+                  <span className="absolute  p-1 bg-red-400 -top-6 rounded-lg -left-20">
+                    {
+                      user.displayName.length > 10? user.displayName.substr(0, 10)+'...': user.displayName
+                    }                    
                   </span>
                 )}
 
                 <img
                   onMouseEnter={() => setShowDisplayName(true)}
-                  onMouseOut={() => setShowDisplayName(false)}                 
+                  onMouseOut={() => setShowDisplayName(false)}
                   style={{ borderRadius: "100%" }}
                   className="w-10 h-10  cursor-pointer "
                   src={user.photoURL || "/assets/user.png"}

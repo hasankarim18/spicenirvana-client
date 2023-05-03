@@ -20,7 +20,8 @@ const Login = () => {
      const loginToast = ()=> toast('Login Successful')
 
       
-     const {signInWithPassword} = useContext(AuthContext)
+     const { signInWithPassword, signInWithGoogle, signInWithWithGithub } =
+       useContext(AuthContext);
 
      let from = location.state?.from?.pathname || "/";
 
@@ -70,6 +71,34 @@ const Login = () => {
            setDisable(false)
          }
     }
+
+    /**google sign in handler */
+    const googleSignInHandler = ()=> {
+       signInWithGoogle()
+         .then(() => {
+          navigate('/')
+         })
+         .catch((error) => {
+          const errorMessage = error.message;
+          setLoginError(errorMessage);
+         });
+    }
+
+
+    /** github sign in handler */
+
+    const gitSignInHandler = ()=> {
+       signInWithWithGithub()
+       .then(()=> {
+        navigate('/')
+       })
+       .catch((error)=> {
+         const errorMessage = error.message;
+         setLoginError(errorMessage)
+       })
+    }
+ 
+
 
  
 
@@ -145,13 +174,19 @@ const Login = () => {
                 <p className="text-red-400">{loginError && loginError}</p>
               </form>
               <div className="px-4 my-4 flex gap-4 justify-between flex-wrap ">
-                <div className="btn w-full text-2xl text-white">
+                <div
+                  onClick={googleSignInHandler}
+                  className="btn w-full text-2xl text-white"
+                >
                   <span className="mr-2 text-xl capitalize  ">
                     Sign in with
                   </span>{" "}
                   <FaGoogle />
                 </div>
-                <div className="btn w-full text-2xl text-white">
+                <div
+                  onClick={gitSignInHandler}
+                  className="btn w-full text-2xl text-white"
+                >
                   <span className="mr-2 text-xl capitalize  ">
                     Sign in with
                   </span>{" "}
