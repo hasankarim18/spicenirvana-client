@@ -80,7 +80,7 @@ const Register = () => {
                   const registeredUser = res.user;
                  setSignUpError(null) 
                   signUpToast(
-                    `Welcome ${registeredUser}. Your are Successfully Registered.`
+                    `Welcome. Your are Successfully Registered.`
                   );
                  updateUser(registeredUser, name, photo)
                    .then(() => {

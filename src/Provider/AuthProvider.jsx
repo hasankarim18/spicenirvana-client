@@ -11,7 +11,7 @@ const AuthProvider = ({children}) => {
 
     const auth = getAuth(app)  
 
-    console.log(user?.photoURL);
+  //  console.log(user?.photoURL);
     
 
   const signUpWithPassword = (email, password)=> {

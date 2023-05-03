@@ -68,13 +68,20 @@ const Navigation = ({ isShow, handleNavbar, navArr, user, logout }) => {
           <div className="flex items-center gap-2 ">
             <div className="bg-white relative rounded-full w-12 flex items-center justify-center  h-12  ">
               <Link to="/user-profile">
-                {showDisplayName && (
-                  <span className="absolute  p-1 bg-red-400 -top-6 rounded-lg -left-20">
-                    {
-                      user.displayName.length > 10? user.displayName.substr(0, 10)+'...': user.displayName
-                    }                    
-                  </span>
-                )}
+                {user?.displayName
+                  ? showDisplayName && (
+                      <span className="absolute   bg-red-400 -top-6 rounded-lg -left-20">
+                        {user?.displayName?.length > 10 ? (
+                          <span className="p-1">
+                            {user?.displayName.substr(0, 10) + "..."}
+                          </span>
+                        ) : (
+                          <span className="p-1"> {user?.displayName} </span>
+                        )}
+                      </span>
+                    )
+                  : null}
+                {}
 
                 <img
                   onMouseEnter={() => setShowDisplayName(true)}
