@@ -14,10 +14,15 @@ const Chefs = ({chef}) => {
     } = chef;
     return (
       <div className="mx-auto">
-        <div className="card w-96 bg-base-100 shadow-xl">
-          <figure>
-            <img style={{height:"300px"}} src={chef_image} alt="Shoes" />
-          </figure>
+        <div className="card w-full sm:w-96 bg-base-100 shadow-xl">
+          <div>
+            <img
+              className=" sm:h-72 h-auto  "
+             
+              src={chef_image}
+              alt="Shoes"
+            />
+          </div>
           <div className="card-body">
             <h2 className="card-title">{chef_name}</h2>
             <p>Years of experience: {number_of_experience} </p>

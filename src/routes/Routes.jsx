@@ -39,9 +39,15 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path:"/recipes/:chef_id",
-        element:<ChefPage />
-      }
+        path: "/recipes/:chef_id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ChefPage />{" "}
+          </PrivateRoute>
+        ),
+        loader: () => fetch("https://spicenirvana.vercel.app/recipes/c001"),
+      },
     ],
   },
 ]);
