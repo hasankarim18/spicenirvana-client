@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import ChefPage from "../Pages/ChefPage/ChefPage";
 import RecipeDetails from "../Components/RecipeDetails/RecipeDetails";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import About from "../Pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/blog",
@@ -53,7 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/recipe/:id",
-        element: <RecipeDetails />,
+        element: (
+          <PrivateRoute>            
+            <RecipeDetails />
+          </PrivateRoute>
+        ),
       },
     ],
   },

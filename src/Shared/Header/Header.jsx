@@ -24,6 +24,10 @@ const Header = () => {
        path: "/user-profile",
        name: "user profile",
      },
+     {
+       path: "/about",
+       name: "About",
+     },
    ];
 
     const handleNavbar = () => {
