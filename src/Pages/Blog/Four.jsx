@@ -3,7 +3,7 @@ const Four = () => {
     <div>
       <div className="container mx-auto mobile_padding">
         <h1 className="text-2xl py-3 text-orange-600">
-          4. What is the difference between nodejs and expressjs
+          4. What is custom hook? And why will you create custom hook?
         </h1>
         <p>
           <strong>Answer</strong>: <br />
