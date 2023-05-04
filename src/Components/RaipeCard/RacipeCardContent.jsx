@@ -1,5 +1,5 @@
 import { Rating } from "@smastrom/react-rating";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LazyLoad from "react-lazy-load";
 import { toast } from "react-toastify";
 
@@ -17,6 +17,25 @@ const RacipeCardContent = ({
 
   
 const [favorite, setfavorite] = useState(false)
+
+//console.log(id)
+
+useEffect(() => {
+  const localFavorite = JSON.parse(localStorage.getItem('favorite'))
+
+  if(localFavorite){
+     const isFavoriter = localFavorite.find((item) => item === id);
+     console.log(isFavoriter);
+     if (isFavoriter === id) {
+       setfavorite(true);
+     }
+  }
+ 
+
+ // console.log(localFavorite);
+
+}, [id])
+
 
 const notify = ()=> toast('Marked as favoriter')
 
