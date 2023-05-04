@@ -28,6 +28,10 @@ const Header = () => {
        path: "/about",
        name: "About",
      },
+     {
+       path: "/favorite",
+       name: "Favorite",
+     },
    ];
 
     const handleNavbar = () => {

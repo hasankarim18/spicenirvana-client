@@ -25,7 +25,7 @@ useEffect(() => {
 
   if(localFavorite){
      const isFavoriter = localFavorite.find((item) => item === id);
-     console.log(isFavoriter);
+    
      if (isFavoriter === id) {
        setfavorite(true);
      }

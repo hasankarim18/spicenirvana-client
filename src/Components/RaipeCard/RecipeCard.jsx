@@ -9,7 +9,7 @@ const RecipeCard = ({recipe}) => {
 
     const { recipe_name, image, ingredients, method,rating, id } = recipe || {}
 
-    console.log(id);
+   
 
        const handleFavorite = () => {
          setFavorite(true);

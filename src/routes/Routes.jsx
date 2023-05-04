@@ -10,6 +10,7 @@ import ChefPage from "../Pages/ChefPage/ChefPage";
 import RecipeDetails from "../Components/RecipeDetails/RecipeDetails";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import About from "../Pages/About/About";
+import FavoriteRecipes from "../Pages/FavoriteRecipes/FavoriteRecipes";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path:"/favorite",
+        element:<PrivateRoute> <FavoriteRecipes /> </PrivateRoute>
+      }
     ],
   },
 ]);
