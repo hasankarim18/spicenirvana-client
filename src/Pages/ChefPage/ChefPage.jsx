@@ -11,7 +11,7 @@ const ChefPage = () => {
    // console.log(chef_id);
 
    const data = useLoaderData()
-   console.log(data);
+  
 
     //console.log(chefs);
 

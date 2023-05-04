@@ -1,53 +1,50 @@
 
 import Slider from "react-slick";
-import HomeBannerSkeleton from "../Utils/HomeBannerSkeleton/HomeBannerSkeleton";
-import { DataContext } from "../../Provider/DataLoadProvider";
-import { useContext } from "react";
+// import HomeBannerSkeleton from "../Utils/HomeBannerSkeleton/HomeBannerSkeleton";
+// import { DataContext } from "../../Provider/DataLoadProvider";
+// import { useContext } from "react";
 
-const HomeBanner = () => {
-
-    const { banner, generalLoader } = useContext(DataContext);
-    
-   
-
+const HomeBanner = ({banner}) => {
 
    const settings = {
      dots: true,
      infinite: true,
      slidesToShow: 1,
      slidesToScroll: 1,
-     autoplay: false,
+     autoplay: true,
      speed: 500,
      autoplaySpeed: 5000,
      cssEase: "linear",
      pauseOnHover: true,
-     appendDots: (dots) => (
-       <div
-         style={{
-           backgroundColor: "#313641",
-           opacity: "1",
-           borderRadius: "10px",
-           padding: "10px",
-           marginTop: "20px",
-           display: "inline-block",
-         }}
-       >
-         <ul style={{ margin: "0px" }}> {dots} </ul>
-       </div>
-     ),
-     customPaging: (i) => (
-       <div
-         style={{
-           width: "30px",
-           color: "white",
-           border: "1px transparent solid",
-           fontSize: "20px",
-           fontWeight: "700",
-         }}
-       >
-         {i + 1}
-       </div>
-     ),
+     lazyLoad: true,
+    //  appendDots: (dots) => (
+    //    <div
+    //      style={{
+    //        backgroundColor: "#313641",
+    //        opacity: "1",
+    //        borderRadius: "10px",
+    //        padding: "10px",
+    //        marginTop: "20px",
+    //        display: "inline-block",
+    //        color: "white",
+    //      }}
+    //    >
+    //      <ul style={{ margin: "0px" }}> {dots} </ul>
+    //    </div>
+    //  ),
+    //  customPaging: (i) => (
+    //    <div
+    //      style={{
+    //        width: "30px",
+    //        color: "white",
+    //        border: "1px transparent solid",
+    //        fontSize: "20px",
+    //        fontWeight: "700",          
+    //      }}
+    //    >
+    //      {i + 1}
+    //    </div>
+    //  ),
      responsive: [
        {
          breakpoint: 1024,
@@ -77,9 +74,7 @@ const HomeBanner = () => {
    };
 
 
-  if(generalLoader){
-    return <HomeBannerSkeleton />
-  }else {
+
  return (
    <div className=" bg-gray-300">
    
@@ -106,7 +101,7 @@ const HomeBanner = () => {
      </Slider>
    </div>
  );
-  }
+  
 
  
 };

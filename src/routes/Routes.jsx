@@ -7,11 +7,14 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import PrivateRoute from "./PrivateRoute";
 import ChefPage from "../Pages/ChefPage/ChefPage";
+import RecipeDetails from "../Components/RecipeDetails/RecipeDetails";
+import ErrorPage from "../Components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -47,6 +50,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("https://spicenirvana.vercel.app/recipes/c001"),
+      },
+      {
+        path: "/recipe/:id",
+        element: <RecipeDetails />,
       },
     ],
   },

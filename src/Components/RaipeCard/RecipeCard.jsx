@@ -1,3 +1,4 @@
+import { Rating } from "@smastrom/react-rating";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -8,7 +9,7 @@ const RecipeCard = ({recipe}) => {
 
  
 
-    const { recipe_name, image, ingredients, method } = recipe || {}
+    const { recipe_name, image, ingredients, method,rating } = recipe || {}
 
        const handleFavorite = () => {
          setFavorite(true);
@@ -27,6 +28,10 @@ const RecipeCard = ({recipe}) => {
           <div className="h-auto ">
             <div className="card-body">
               <h2 className="card-title">{recipe_name}</h2>
+              <div className="flex gap-2">
+                <span>Recipe Rating:</span>
+                <Rating style={{ maxWidth: 80 }} value={rating} readOnly />{" "}
+              </div>
               <div className="flex flex-col xl:flex-row  ">
                 <ul className=" w-1/4 list-disc ml-4 ">
                   {ingredients.map((item, i) => (

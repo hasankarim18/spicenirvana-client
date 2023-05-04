@@ -6,16 +6,19 @@ export const DataContext = createContext()
 const DataLoadProvider = ({children}) => {
     const [dataLoading, setDataLoading] = useState(true)
     const [chefs, setChefs] = useState([])
-      const [banner, setBanner] = useState([]);
+      const [general, setGeneral] = useState([]);
       const [generalLoader, setGeneralLoader] = useState(true);
+      const [allRecipes, setAllRecipes] = useState([])
+      const [allRecipeLoading, setAllRecipeLoading] = useState(true)
       
+      console.log(general);
 
         useEffect(() => {
           axios
             .get("https://spicenirvana.vercel.app/general")
             .then((response) => {
               setGeneralLoader(false);
-              setBanner(response.data.banner);
+              setGeneral(response.data);
             })
             .catch((error) => {
               console.log(error);
@@ -37,12 +40,29 @@ const DataLoadProvider = ({children}) => {
            });
 
     }, [])
+
+    // all recipes
+    useEffect(() => {
+         axios
+           .get("https://spicenirvana.vercel.app/recipes")
+           .then((response) => {
+            
+             setAllRecipeLoading(false);
+             setAllRecipes(response.data);
+           })
+           .catch((error) => {
+             console.log(error);
+           });
+
+    }, [])
     
     const data = {
       chefs,
       dataLoading,
-      banner,
+      general,
       generalLoader,
+      allRecipes,
+      allRecipeLoading
     };
 
 

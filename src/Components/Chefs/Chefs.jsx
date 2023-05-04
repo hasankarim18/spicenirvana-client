@@ -29,9 +29,9 @@ const Chefs = ({chef}) => {
             <p>Likes {likes_count}+ </p>
             <div>
               <div className="flex gap-2 ">
-                <span>Rating: </span>
+                <span>Chef Rating: </span>
                 <Rating
-                  style={{ maxWidth: 120 }}
+                  style={{ maxWidth: 80 }}
                   value={chef_rating}
                   readOnly
                 />

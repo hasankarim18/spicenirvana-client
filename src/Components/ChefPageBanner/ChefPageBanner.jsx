@@ -45,7 +45,7 @@ const ChefPageBanner = ({ chef }) => {
                  </li>
                  <li className="mb-2  ">
                    <div className="flex gap-2 ">
-                     <span>Rating: </span>
+                     <span>Chef Rating: </span>
                      <Rating
                        style={{ maxWidth: 120 }}
                        value={chef_rating}
