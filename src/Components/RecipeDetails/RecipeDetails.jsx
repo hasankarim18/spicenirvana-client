@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const RecipeDetails = () => {
       const [favorite, setFavorite] = useState(false);
-    const {id} = useParams()
+    const params = useParams()
 
        const notify = () =>toast(` successfully marked as favoriter!`);
 
@@ -17,19 +17,15 @@ const RecipeDetails = () => {
 
     const { allRecipes, allRecipeLoading} = useContext(DataContext)
 
-    console.log(id);
-
-
-   
-
+    
     if(allRecipeLoading){
         return null 
     }else {
-       
-        const selectedRacipe = allRecipes.find(racipe => racipe.id === parseInt(id, 10))
+       console.log(params);
+        const selectedRacipe = allRecipes.find((racipe) => racipe.id == params.id);
         console.log(selectedRacipe);
 
-        const { recipe_name, image, ingredients, method, rating } =
+        const { recipe_name, image, ingredients, method, rating,id } =
           selectedRacipe;
 
      return (
@@ -43,6 +39,7 @@ const RecipeDetails = () => {
              rating={rating}
              handleFavorite={handleFavorite}
              favorite={favorite}
+             id={id}
            />
          </div>
        </div>

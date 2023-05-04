@@ -8,22 +8,15 @@ import Three from "./Three";
 import Two from "./Two";
 import PdfFile from "./PdfFile";
 
-
-
-
-
-
-
 // ReactPDF.renderToStream(<MyDocument />);
 
 
-const Blog = () => {
-  
+const Blog = () => {  
     
     return (
       <div>
         <div className="py-4 text-center">
-          <PDFDownloadLink document={<PdfFile />} fileName="somename.pdf">
+          <PDFDownloadLink document={<PdfFile />} fileName="blog.pdf">
             {({  loading }) =>
               loading ? (
                 <button className="btn">Loading document...</button>

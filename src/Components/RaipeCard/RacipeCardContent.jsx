@@ -1,5 +1,7 @@
 import { Rating } from "@smastrom/react-rating";
+import { useState } from "react";
 import LazyLoad from "react-lazy-load";
+import { toast } from "react-toastify";
 
 
 const RacipeCardContent = ({
@@ -8,9 +10,36 @@ const RacipeCardContent = ({
   ingredients,
   method,
   rating,
-  handleFavorite,
-  favorite,
+  id
+ // handleFavorite,
+ // favorite,
 }) => {
+
+  
+const [favorite, setfavorite] = useState(false)
+
+const notify = ()=> toast('Marked as favoriter')
+
+
+const handleFavorite = (new_id)=> {
+
+ const favoriter_id_arr = JSON.parse(localStorage.getItem("favorite"));
+ if (favoriter_id_arr) {
+//  console.log(favoriter_id_arr);
+  console.log(new_id);
+    const newFavoriteArray = [...favoriter_id_arr, new_id];  
+     localStorage.setItem("favorite", JSON.stringify(newFavoriteArray));  
+ // const newFavorite_id = 
+ } else {
+   const id_arr = [id];
+   const id_json = JSON.stringify(id_arr);
+   localStorage.setItem("favorite", id_json);
+ }
+ 
+ notify()
+  setfavorite(true)
+}
+
   return (
     <div className="card  bg-base-100 shadow-xl w-full">
       <div>
@@ -47,7 +76,7 @@ const RacipeCardContent = ({
       </div>
       <div className="card-actions  mt-auto justify-center my-auto mb-4  ">
         <button
-          onClick={handleFavorite}
+          onClick={() => handleFavorite(id)}
           disabled={favorite}
           className="btn bg-green-500 border-0 bg-opacity-90  "
         >

@@ -7,7 +7,7 @@ const RecipeCard = ({recipe}) => {
     const [favorite, setFavorite] = useState(false)
     const notify = (name)=> toast(`${name} successfully marked as favoriter!`) 
 
-    const { recipe_name, image, ingredients, method,rating } = recipe || {}
+    const { recipe_name, image, ingredients, method,rating, id } = recipe || {}
 
        const handleFavorite = () => {
          setFavorite(true);
@@ -22,6 +22,7 @@ const RecipeCard = ({recipe}) => {
         rating={rating}
         handleFavorite={handleFavorite}
         favorite={favorite}
+        id={id}
       />
     );
 };

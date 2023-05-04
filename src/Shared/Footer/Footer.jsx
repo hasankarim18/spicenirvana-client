@@ -43,6 +43,11 @@ const Footer = () => {
                     Blog
                   </Link>
                 </li>
+                <li className="mb-4">
+                  <Link className="hover:text-orange-400" to="/about">
+                    About
+                  </Link>
+                </li>
               </ul>
               <ul className="flex gap-4" >
                 <li> <a className="text-3xl hover:text-orange-400" href="#">  <FaFacebook /> </a></li>
