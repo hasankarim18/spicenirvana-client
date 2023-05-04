@@ -1,5 +1,6 @@
 import { Rating } from "@smastrom/react-rating";
 import { useState } from "react";
+import LazyLoad from "react-lazy-load";
 import { toast } from "react-toastify";
 
 
@@ -19,11 +20,13 @@ const RecipeCard = ({recipe}) => {
       <div className="card  bg-base-100 shadow-xl w-full">
         <div>
           <figure>
-            <img
-              className="w-sm mx-w-sm sm:h-96 h-auto  "
-              src={image}
-              alt="Shoes"
-            />
+            <LazyLoad threshold={0.95}>
+              <img
+                className="w-sm mx-w-sm sm:h-96 h-auto  "
+                src={image}
+                alt="Shoes"
+              />
+            </LazyLoad>
           </figure>
           <div className="h-auto ">
             <div className="card-body">

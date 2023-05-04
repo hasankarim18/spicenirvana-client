@@ -1,4 +1,5 @@
 import { Rating } from "@smastrom/react-rating";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 
@@ -9,7 +10,13 @@ const HomeCards = ({recipe}) => {
           return (
             <div key={item.id} className="card w-full bg-base-100 shadow-xl">
               <figure>
-                <img className="w-full sm:h-60 h-auto " src={item.image} alt="Shoes" />
+                <LazyLoad threshold={0.95}>
+                  <img
+                    className="w-full sm:h-60 h-auto "
+                    src={item.image}
+                    alt="Shoes"
+                  />
+                </LazyLoad>
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{item.recipe_name}</h2>
@@ -22,7 +29,9 @@ const HomeCards = ({recipe}) => {
                   />{" "}
                 </div>
                 <div className="card-actions justify-end">
-                  <Link to={`/recipe/${item.id}`} className="btn w-full">View Details</Link>
+                  <Link to={`/recipe/${item.id}`} className="btn w-full">
+                    View Details
+                  </Link>
                 </div>
               </div>
             </div>

@@ -3,6 +3,7 @@ import { DataContext } from "../../Provider/DataLoadProvider";
 import Spinner from "../Utils/Spinner";
 import { Rating } from "@smastrom/react-rating";
 import { AuthContext } from "../../Provider/AuthProvider";
+import LazyLoad from "react-lazy-load";
 
 const ChefPageBanner = ({ chef }) => {
  const {dataLoading}  = useContext(DataContext)
@@ -30,7 +31,14 @@ const ChefPageBanner = ({ chef }) => {
        return (
          <div style={{ minHeight: "400px" }} className="hero  bg-base-200">
            <div className="hero-content flex-col lg:flex-row">
-             <img  src={chef_image} className="w-max-sm rounded-lg shadow-2xl" />
+             <LazyLoad
+               threshold={0.95}              
+             >
+               <img
+                 src={chef_image}
+                 className="w-max-sm rounded-lg shadow-2xl"
+               />
+             </LazyLoad>
              <div>
                <h1 className="text-3xl font-bold  ">{chef_name}</h1>
                <hr />
