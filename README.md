@@ -17,6 +17,7 @@ Click here for the firebase Live: [https://spicenirvana-f6fb2.web.app/](https://
 
 5. The `User Profile` and `Chef's` page are protecd, viewer have to login to visit that page. After login redirecting to the previous page is enabled.
 
+6. Recipes can be added as `favorite` and can be seen later and can be removed from `favoriter list`
 
 
 
@@ -26,9 +27,8 @@ Click here for the firebase Live: [https://spicenirvana-f6fb2.web.app/](https://
 
 
 
-#### [Client Side Live link (may not be updated) :: `Netlify`](https://spicenirvana.netlify.app/)
-Click here for the private repo: [https://spicenirvana.netlify.app/](https://spicenirvana.netlify.app/)
-
+## [Client Side Private repo link](https://classroom.github.com/a/ym3y0_ro)
+Click here for the private repo: [https://classroom.github.com/a/ym3y0_ro](https://classroom.github.com/a/ym3y0_ro)
 
 
 ## [Server Side Private repo link](https://classroom.github.com/a/1Xt5Fixs)
