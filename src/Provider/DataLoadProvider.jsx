@@ -11,7 +11,7 @@ const DataLoadProvider = ({children}) => {
       const [allRecipes, setAllRecipes] = useState([])
       const [allRecipeLoading, setAllRecipeLoading] = useState(true)
       
-      console.log(general);
+   
 
         useEffect(() => {
           axios

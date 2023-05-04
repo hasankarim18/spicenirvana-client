@@ -16,7 +16,7 @@ const Popular = () => {
         popular.some((popular) => popular.recipe_id === recipe.id)
       );
 
-      console.log(filtered_recipes);
+     
       if(filtered_recipes.length > 0){
          return (
            <HomeCards recipe={filtered_recipes} />
