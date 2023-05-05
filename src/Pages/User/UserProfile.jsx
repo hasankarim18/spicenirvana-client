@@ -8,8 +8,7 @@ const UserProfile = () => {
 
   // console.log(user);
   // console.log(user.photoURL);
-  console.log(user);
-
+ 
   const { photoURL, displayName, email, emailVerified } = user;
 
   return (

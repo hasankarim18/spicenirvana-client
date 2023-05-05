@@ -6,6 +6,7 @@ import HomeBanner from "../../Components/HomeBanner/HomeBanner";
 import HomeBannerSkeleton from "../../Components/Utils/HomeBannerSkeleton/HomeBannerSkeleton";
 import Popular from "../../Components/Popular/Popular";
 import Latest from "../../Components/Latest/Latest";
+import UpcommingEvents from "../../Components/UpcommingEvents/UpcommingEvents";
 
 
 
@@ -16,6 +17,7 @@ const Home = () => {
     
     return (
       <div>
+        <UpcommingEvents />
         {/* <Spinner /> */}
         <div className="container mobile_padding mx-auto my-12">
           {generalLoader ? (
