@@ -33,7 +33,7 @@ const FavoriteRecipes = () => {
         };
 
 
-        console.log(localFavorite);
+       
 
          if(localFavorite){
             const favoriteRecipes = allRecipes.filter((recipe) =>
@@ -94,7 +94,9 @@ const FavoriteRecipes = () => {
              return (
                <div>
                  <div className="container mx-auto mobile_padding">
-                   <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1"></div>
+                   <div className="">
+                    <h1 className="text-4xl text-center text-rose-500 py-12">No Recipe selected as favoriter</h1>
+                   </div>
                  </div>
                </div>
              );
