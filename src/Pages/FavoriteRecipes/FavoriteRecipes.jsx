@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../../Provider/DataLoadProvider";
 import Spinner from "../../Components/Utils/Spinner";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 
 const FavoriteRecipes = () => {
+   const [isDataRemoved, setIsDataRemoved] = useState(false)
 
     const {  allRecipes, allRecipeLoading} = useContext(DataContext)
  //   const [isRemoved, setIsRemoved] = useState(false)
@@ -29,6 +30,7 @@ const FavoriteRecipes = () => {
         
           localStorage.setItem("favorite", filteredArrayJson);
          // setIsRemoved(true)
+         setIsDataRemoved(!isDataRemoved);
          removeNotify()
         };
 
