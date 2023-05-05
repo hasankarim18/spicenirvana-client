@@ -21,9 +21,9 @@ const RecipeDetails = () => {
     if(allRecipeLoading){
         return null 
     }else {
-       console.log(params);
+      
         const selectedRacipe = allRecipes.find((racipe) => racipe.id == params.id);
-        console.log(selectedRacipe);
+      
 
         const { recipe_name, image, ingredients, method, rating,id } =
           selectedRacipe;

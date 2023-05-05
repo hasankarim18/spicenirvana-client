@@ -1,19 +1,41 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import LazyLoad from "react-lazy-load";
+import EditProfile from "./EditProfile";
+
 
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
+  
+
+   const [modalIsOpen, setIsOpen] = useState(false);
+
+    const { photoURL, displayName, email, emailVerified } = user;
+   
+
+    // let subtitle;
+
+   function openModal() {
+     setIsOpen(true);
+   }
+
+ 
+
+   function closeModal() {
+     setIsOpen(false);
+   }
 
   // console.log(user);
   // console.log(user.photoURL);
  
-  const { photoURL, displayName, email, emailVerified } = user;
 
   return (
     <>
-      <div style={{ height: "550px", marginTop:"-50px"}} className="hero  bg-base-200">
+      <div
+        style={{ height: "550px", marginTop: "-50px" }}
+        className="hero  bg-base-200"
+      >
         <div className="hero-content sm:justify-start justify-center w-full flex-col lg:flex-row">
           <LazyLoad threshold={0.95}>
             <img
@@ -35,7 +57,7 @@ const UserProfile = () => {
                 <span className="text-green-400">Verified Email</span>
               )}
             </p>
-            <button id="my-modal" className="btn ">
+            <button onClick={openModal} id="my-modal" className="btn ">
               Edit Profile
             </button>
           </div>
@@ -44,6 +66,12 @@ const UserProfile = () => {
         {/* The button to open modal */}
       </div>
       {/* Put this part before </body> tag */}
+
+      <EditProfile
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+        setIsOpen={setIsOpen}
+      />
     </>
   );
 };

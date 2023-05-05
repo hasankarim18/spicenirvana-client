@@ -45,7 +45,7 @@ const handleFavorite = (new_id)=> {
  const favoriter_id_arr = JSON.parse(localStorage.getItem("favorite"));
  if (favoriter_id_arr) {
 //  console.log(favoriter_id_arr);
-  console.log(new_id);
+ 
     const newFavoriteArray = [...favoriter_id_arr, new_id];  
      localStorage.setItem("favorite", JSON.stringify(newFavoriteArray));  
  // const newFavorite_id = 
