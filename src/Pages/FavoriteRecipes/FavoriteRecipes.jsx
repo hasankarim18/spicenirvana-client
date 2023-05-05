@@ -41,54 +41,56 @@ const FavoriteRecipes = () => {
             );
 
           //  setFavoriteRecipesState(favoriteRecipes);
+        
 
             return (
-            <div>
+              <div>
                 <div className="container mx-auto mobile_padding py-8">
-                <div className="grid xl:grid-cols-4 gap-8 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
-                    {
-                        favoriteRecipes.map(item => {
-                            return (
-                              <div key={item.id}>
-                                <div className="card w-full  bg-base-100 shadow-xl">
-                                  <figure>
-                                    <img
-                                      className="w-full h-60"
-                                      src={item.image}
-                                      alt="Shoes"
-                                    />
-                                  </figure>
-                                  <div className="card-body">
-                                    <h2 className="card-title">
-                                      {item.recipe_name}
-                                    </h2>
+                  <div className="grid xl:grid-cols-4 gap-8 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+                    {favoriteRecipes.map((item) => {
+                      return (
+                        <div key={item.id}>
+                          <div className="card w-full  bg-base-100 shadow-xl">
+                            <figure>
+                              <img
+                                className="w-full h-60"
+                                src={item.image}
+                                alt="Shoes"
+                              />
+                            </figure>
+                            <div className="card-body">
+                              <h2 className="card-title">{item.recipe_name}</h2>
 
-                                    <div className="flex flex-col gap-4 justify-between">
-                                      <Link
-                                        to={`/recipe/${item.id}`}
-                                        className="btn  border-0"
-                                      >
-                                        View Details
-                                      </Link>
-                                      <button
-                                        disabled={isRemoved}
-                                        onClick={() => removeFavorite(item.id)}
-                                        className="btn border-0 bg-rose-400 hover:bg-rose-600 "
-                                      >
-                                        {isRemoved
-                                          ? "Removed"
-                                          : "Remove From Favorite"}
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
+                              <div className="flex flex-col gap-4 justify-between">
+                                <Link
+                                  to={`/recipe/${item.id}`}
+                                  className="btn  border-0"
+                                >
+                                  View Details
+                                </Link>
+                                <button
+                                  disabled={isRemoved}
+                                  onClick={() => removeFavorite(item.id)}
+                                  className="btn border-0 bg-rose-400 hover:bg-rose-600 "
+                                >
+                                  {isRemoved
+                                    ? "Removed"
+                                    : "Remove From Favorite"}
+                                </button>
                               </div>
-                            );
-                        })
-                    }
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                </div>
-            </div>
+                {favoriteRecipes.length === 0 && (
+                  <h1 className="text-3xl text-center container mx-auto text-rose-400">
+                    No favorite recipe added yet. Please add some recipe.{" "}
+                  </h1>
+                )}
+              </div>
             );
          }else {
              return (
