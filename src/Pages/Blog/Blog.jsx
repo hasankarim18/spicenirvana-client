@@ -21,7 +21,7 @@ const Blog = () => {
               loading ? (
                 <button className="btn">Loading document...</button>
               ) : (
-                <button className="btn">Download</button>
+                <button className="btn">Download Blog As Pdf </button>
               )
             }
           </PDFDownloadLink>

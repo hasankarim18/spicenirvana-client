@@ -76,7 +76,7 @@ const Login = () => {
     const googleSignInHandler = ()=> {
        signInWithGoogle()
          .then(() => {
-          navigate('/')
+           navigate(from);
          })
          .catch((error) => {
           const errorMessage = error.message;
@@ -90,7 +90,7 @@ const Login = () => {
     const gitSignInHandler = ()=> {
        signInWithWithGithub()
        .then(()=> {
-        navigate('/')
+        navigate(from);
        })
        .catch((error)=> {
          const errorMessage = error.message;
